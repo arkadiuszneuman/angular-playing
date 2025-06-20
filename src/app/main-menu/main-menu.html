@@ -1,0 +1,9 @@
+<div class="main-menu">
+  <div><a routerLink="/">Home</a></div>
+  <div>
+    <a [routerLink]="['/id-and-param', 123]" [queryParams]="{ param: 543 }"
+      >ID and param</a
+    >
+  </div>
+  <div><a routerLink="/contact">Contact</a></div>
+</div>
