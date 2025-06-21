@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { Simple } from './simple/simple';
-import { IdAndParam } from './id-and-param/id-and-param';
 
 export const routes: Routes = [
   {
@@ -11,5 +10,13 @@ export const routes: Routes = [
     path: 'id-and-param/:id',
     loadComponent: () => import('./id-and-param/id-and-param').then(m => m.IdAndParam),
     title: 'ID and Param',
+  },
+  {
+    path: 'directives',
+    loadComponent: () => import('./directives/directives').then(m => m.Directives),
+  },
+  {
+    path: 'components',
+    loadComponent: () => import('./components/components').then(m => m.Components),
   }
 ];
