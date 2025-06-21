@@ -1,0 +1,11 @@
+@if (loading()) { @for(i of [1,2,3,4,5]; track $index) {
+<div class="post-skeleton">
+  <div class="skeleton-title"></div>
+  <div class="skeleton-body"></div>
+</div>
+} } @else { @for (post of posts(); track post.id) {
+<div class="post">
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.body }}</p>
+</div>
+} }
