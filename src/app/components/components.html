@@ -1,3 +1,7 @@
 <p>components works!</p>
 <input type="text" [(ngModel)]="testInput" />
 <app-internal-component [testInput]="testInput()"></app-internal-component>
+<app-two-way-binding
+  [(text)]="testInput"
+  (textChange)="textChange($event)"
+></app-two-way-binding>
