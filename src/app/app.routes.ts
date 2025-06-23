@@ -22,5 +22,16 @@ export const routes: Routes = [
   {
     path: 'http-test',
     loadComponent: () => import('./http-test/http-test').then(m => m.HttpTest),
+    children: [
+      {
+        path: ':id',
+        loadComponent: () => import('./http-test/form-template/form-template').then(m => m.FormTemplate),
+      },
+    ]
+  },
+
+  {
+    path: 'form-reactive',
+    loadComponent: () => import('./form-reactive/form-reactive').then(m => m.FormReactive),
   }
 ];

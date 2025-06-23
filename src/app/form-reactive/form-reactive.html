@@ -1,0 +1,13 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <label for="title">First Name: </label>
+  <input id="title" type="text" formControlName="title" required />
+  @if (postForm.controls.title.hasError('required')) {
+  <div class="alert">Title is required.</div>
+  } @if (postForm.controls.title.hasError('minlength')) {
+  <div>Name must be at least 4 characters long.</div>
+  }
+  <label for="content">Last Name: </label>
+  <input id="content" type="text" formControlName="content" />
+
+  <button type="submit" [disabled]="!postForm.valid">Submit</button>
+</form>

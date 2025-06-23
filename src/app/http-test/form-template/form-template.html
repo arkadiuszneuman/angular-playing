@@ -1,0 +1,30 @@
+<a routerLink=".."><button>Back</button></a>
+
+@let x = post(); @if (!x.loading) {
+<form #postForm="ngForm" (ngSubmit)="onSubmit()">
+  <label for="title">Title: </label>
+  <input
+    id="title"
+    type="text"
+    required
+    [(ngModel)]="x.post.title"
+    name="title"
+    #title="ngModel"
+    minlength="5"
+  />
+  @if (title.invalid && (title.dirty || title.touched)) {
+  <div class="alert alert-danger">
+    @if (title.hasError('required')) {
+    <div>Name is required.</div>
+    } @if (title.hasError('minlength')) {
+    <div>Name must be at least 5 characters long.</div>
+    }
+  </div>
+  }
+
+  <label for="content">Body: </label>
+  <input id="content" type="text" [(ngModel)]="x.post.body" name="body" />
+
+  <button type="submit" [disabled]="!postForm.form.valid">Save</button>
+</form>
+}

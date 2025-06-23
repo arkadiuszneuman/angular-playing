@@ -2,10 +2,11 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../services/post-service';
 import Post from '../models/Post';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-http-test',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './http-test.html',
   styleUrl: './http-test.scss'
 })
