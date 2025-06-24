@@ -4,7 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../../services/post-service';
-import { defer, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import Post from '../../models/Post';
 
 describe('FormTemplate', () => {
@@ -27,11 +27,14 @@ describe('FormTemplate', () => {
     component = fixture.componentInstance;
 
     const postService = TestBed.inject(PostService);
-    getPostSpy = spyOn(postService, 'getPost').and.returnValue(asyncData<Post>({
-      id: 2,
-      title: 'Test Post',
-      body: 'This is a test post body.',
-      userId: 1
+    getPostSpy = spyOn(postService, 'getPost').and.returnValue(new Observable<Post>(subscriber => {
+      subscriber.next({
+        id: 2,
+        title: 'Test Post',
+        body: 'This is a test post body.',
+        userId: 1
+      });
+      subscriber.complete();
     }));
 
     fixture.componentRef.setInput('id', 2);
@@ -48,10 +51,3 @@ describe('FormTemplate', () => {
     expect(fixture.nativeElement.querySelector('input[name="body"]').value).toBe('This is a test post body.');
   });
 });
-
-export function asyncData<T>(data: T) {
-  return defer(() => {
-    console.log('asyncData called with:', data);
-    return Promise.resolve(data);
-  });
-}
