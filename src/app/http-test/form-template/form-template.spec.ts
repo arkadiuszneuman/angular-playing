@@ -50,4 +50,20 @@ describe('FormTemplate', () => {
     expect(fixture.nativeElement.querySelector('input[name="title"]').value).toBe('Test Post');
     expect(fixture.nativeElement.querySelector('input[name="body"]').value).toBe('This is a test post body.');
   });
+
+  it('should call savePost on submit', () => {
+    const postService = TestBed.inject(PostService);
+    const savePostSpy = spyOn(postService, 'savePost').and.returnValue(new Observable<Post>(subscriber => {
+      subscriber.next({
+        id: 2,
+        title: 'Test Post',
+        body: 'This is a test post body.',
+        userId: 1
+      });
+      subscriber.complete();
+    }));
+
+    fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
+    expect(savePostSpy).toHaveBeenCalled();
+  });
 });

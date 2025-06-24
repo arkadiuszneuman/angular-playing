@@ -23,7 +23,6 @@ export class FormTemplate implements OnInit {
   }
   onSubmit() {
     const post = this.post()
-    console.log(post)
     if (!post.loading) {
       this.postService.savePost(post.post).subscribe(_ => this.router.navigateByUrl(this.router.url.substring(0, this.router.url.lastIndexOf('/'))))
     }
