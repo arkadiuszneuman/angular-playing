@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Simple } from './simple/simple';
+import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
   {
@@ -29,9 +30,13 @@ export const routes: Routes = [
       },
     ]
   },
-
   {
     path: 'form-reactive',
     loadComponent: () => import('./form-reactive/form-reactive').then(m => m.FormReactive),
-  }
+  },
+  {
+    path: 'guarded',
+    loadComponent: () => import('./form-reactive/form-reactive').then(m => m.FormReactive),
+    canActivate: [authGuard]
+  },
 ];
