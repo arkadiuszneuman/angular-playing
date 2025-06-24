@@ -23,6 +23,9 @@ describe('FormTemplate', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(FormTemplate);
+    fixture.componentRef.setInput('id', 2);
+    component = fixture.componentInstance;
+
     const postService = TestBed.inject(PostService);
     getPostSpy = spyOn(postService, 'getPost').and.returnValue(asyncData<Post>({
       id: 2,
