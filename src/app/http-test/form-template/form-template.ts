@@ -3,10 +3,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PostService } from '../../services/post-service';
 import Post from '../../models/Post';
 import { FormsModule, NgModel } from '@angular/forms';
+import { TestValidationDirective } from '../../test-validation-directive';
 
 @Component({
   selector: 'app-form-template',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, TestValidationDirective],
   templateUrl: './form-template.html',
   styleUrl: './form-template.scss'
 })

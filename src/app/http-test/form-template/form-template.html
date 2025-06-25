@@ -23,7 +23,13 @@
   }
 
   <label for="body">Body: </label>
-  <input id="body" type="text" [(ngModel)]="x.post.body" name="body" />
+  <input
+    appTestValidation
+    id="body"
+    type="text"
+    [(ngModel)]="x.post.body"
+    name="body"
+  />
 
   <button type="submit" [disabled]="!postForm.form.valid">Save</button>
 </form>
