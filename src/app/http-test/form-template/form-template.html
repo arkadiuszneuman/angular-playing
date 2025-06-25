@@ -4,6 +4,7 @@
 <form #postForm="ngForm" (ngSubmit)="onSubmit()">
   <label for="title">Title: </label>
   <input
+    #titleRef
     id="title"
     type="text"
     required
