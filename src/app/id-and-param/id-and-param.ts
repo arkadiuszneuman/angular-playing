@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,8 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class IdAndParam {
   id: string | null = null;
   param: string | null = null;
+  route = inject(ActivatedRoute);
 
-  constructor(private route: ActivatedRoute) {
+  constructor() {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
