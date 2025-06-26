@@ -7,3 +7,11 @@
 <ng-template #secondViewTemplate>
   <p>Second view</p>
 </ng-template>
+
+<ng-template #testTemplate>
+  <p>This is a template fragment</p>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="testTemplate"></ng-container>
+
+<ng-container #testContainer></ng-container>
