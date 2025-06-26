@@ -8,32 +8,20 @@ export class TestStructuralDirective {
   private viewContainerRef = inject(ViewContainerRef);
 
   appTestStructural = input.required<boolean>();
+  appTestStructuralElse = input<TemplateRef<any>>();
 
   constructor() {
     effect(() => {
+      const condition = this.appTestStructural();
+      const elseTemplate = this.appTestStructuralElse();
+
       this.viewContainerRef.clear();
-      if (!this.appTestStructural()) {
+
+      if (!condition) {
         this.viewContainerRef.createEmbeddedView(this.templateRef);
+      } else if (elseTemplate) {
+        this.viewContainerRef.createEmbeddedView(elseTemplate);
       }
-    })
+    });
   }
-
-  // condition = input.required<boolean>();
-  // else = input<TemplateRef<any>>();
-
-  // constructor() {
-  //   effect(() => {
-  //     const condition = this.condition();
-  //     const elseTemplate = this.else();
-
-  //     this.viewContainerRef.clear();
-
-  //     if (!condition) {
-  //       this.viewContainerRef.createEmbeddedView(this.templateRef);
-  //     } else if (elseTemplate) {
-  //       this.viewContainerRef.createEmbeddedView(elseTemplate);
-  //     }
-  //   });
-  // }
 }
-

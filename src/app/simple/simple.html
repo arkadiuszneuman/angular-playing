@@ -1,5 +1,9 @@
-<div *appTestStructural="false">Please log in</div>
+<div *appTestStructural="true; else secondViewTemplate">Please log in</div>
 
 <ng-template [appTestStructural]="false">
   <div>Please log in 2</div>
+</ng-template>
+
+<ng-template #secondViewTemplate>
+  <p>Second view</p>
 </ng-template>
