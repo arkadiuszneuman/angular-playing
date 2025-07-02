@@ -39,4 +39,8 @@ export const routes: Routes = [
     loadComponent: () => import('./form-reactive/form-reactive').then(m => m.FormReactive),
     canActivate: [authGuard]
   },
+  {
+    path: 'interview-test',
+    loadComponent: () => import('./interview-test/interview-test').then(m => m.InterviewTest),
+  },
 ];
