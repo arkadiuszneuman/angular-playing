@@ -15,4 +15,8 @@ export class Components {
   textChange = (value: string) => {
     console.log("Text changed to: ", value);
   }
+
+  textOutputInvoked = () => {
+    console.log("Test output")
+  }
 }
