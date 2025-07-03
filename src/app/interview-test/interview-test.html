@@ -1,3 +1,26 @@
+@for (item of [1, 2, 3]; track $index) {
 <app-interview-text [isActivated]="isActivated()"></app-interview-text>
+}
 
 <button (click)="onButtonClick()">Click me</button>
+
+<form (ngSubmit)="onFormSubmit()">
+  <input
+    type="text"
+    [(ngModel)]="post().title"
+    placeholder="Enter text"
+    name="title"
+    minlength="3"
+    #title="ngModel"
+  />
+  @if (title.invalid && (title.dirty || title.touched)) {
+  <div class="alert alert-danger">
+    @if (title.hasError('required')) {
+    <div>Name is required.</div>
+    } @if (title.hasError('minlength')) {
+    <div>Name must be at least 3 characters long.</div>
+    }
+  </div>
+  }
+  <button type="submit">Submit</button>
+</form>

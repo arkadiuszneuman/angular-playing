@@ -17,11 +17,16 @@ export class HttpTest implements OnInit {
 
   ngOnInit(): void {
     this.loading.set(true);
-    this.postService.getPosts().subscribe(v => {
-      this.posts.set(v);
-      setTimeout(() => {
-        this.loading.set(false)
-      }, 1500);
+    this.postService.getPosts().subscribe({
+      next: (v) => this.posts.set(v),
+      error: () => {
+        console.error('Error fetching posts');
+      },
+      complete: () => {
+        setTimeout(() => {
+          this.loading.set(false)
+        }, 1500);
+      }
     });
   }
 
